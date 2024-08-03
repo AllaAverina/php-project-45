@@ -6,7 +6,7 @@ use function Php\Project\Engine\startGame;
 
 function isEven(int $number)
 {
-   return $number % 2 === 0;
+    return $number % 2 === 0;
 }
 
 function run()
@@ -16,4 +16,4 @@ function run()
     $getAnswer = fn(int $number) => isEven($number) ? 'yes' : 'no';
 
     startGame($description, $getQuestion, $getAnswer);
-};
+}

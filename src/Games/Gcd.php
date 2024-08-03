@@ -15,6 +15,6 @@ function run()
     $getQuestion = fn() => [rand(1, 100), rand(1, 100)];
     $getTextQuestion = fn(array $question) => implode(' ', $question);
     $getAnswer = fn(array $question) => (string)gcd(...$question);
-    
+
     startGame($description, $getQuestion, $getAnswer, $getTextQuestion);
 }

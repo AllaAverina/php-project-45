@@ -19,7 +19,7 @@ function run()
 {
     $description = 'What number is missing in the progression?';
 
-    $getQuestion = function() {
+    $getQuestion = function () {
         $progression = generateProgression(rand(5, 10), rand(1, 10), rand(1, 10));
         $hiddenIndex = rand(0, count($progression) - 1);
         $progression[$hiddenIndex] = '..';
@@ -28,7 +28,7 @@ function run()
 
     $getTextQuestion = fn(array $progression) => implode(' ', $progression);
 
-    $getAnswer = function(array $progression) {
+    $getAnswer = function (array $progression) {
         $hiddenIndex = array_search('..', $progression);
 
         if ($hiddenIndex < 2) {
@@ -41,6 +41,6 @@ function run()
 
         return (string) $answer;
     };
-    
+
     startGame($description, $getQuestion, $getAnswer, $getTextQuestion);
 }
