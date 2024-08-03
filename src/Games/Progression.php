@@ -29,14 +29,14 @@ function run()
     $getTextQuestion = fn(array $progression) => implode(' ', $progression);
 
     $getAnswer = function (array $progression) {
-        $index = array_search('..', $progression, true);
+        $index = (int) array_search('..', $progression, true);
 
         if ($index < 2) {
-            $answer = (int) $progression[$index + 1] - ((int) $progression[$index + 2] - (int) $progression[$index + 1]);
+            $answer = $progression[$index + 1] - ($progression[$index + 2] - $progression[$index + 1]);
         } elseif ($index < count($progression) - 2) {
-            $answer = (int) $progression[$index - 1] + ((int) $progression[$index + 2] - (int) $progression[$index + 1]);
+            $answer = $progression[$index - 1] + ($progression[$index + 2] - $progression[$index + 1]);
         } else {
-            $answer = (int) $progression[$index - 1] - ((int) $progression[$index - 2] - (int) $progression[$index - 1]);
+            $answer = $progression[$index - 1] - ($progression[$index - 2] - $progression[$index - 1]);
         }
 
         return (string) $answer;
