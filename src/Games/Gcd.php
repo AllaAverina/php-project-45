@@ -6,7 +6,7 @@ use function Php\Project\Engine\startGame;
 
 function gcd(int $left, int $right)
 {
-    return $right ? gcd($right, $left % $right) : $left;
+    return ($right > 0) ? gcd($right, $left % $right) : $left;
 }
 
 function run()

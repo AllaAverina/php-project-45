@@ -18,7 +18,10 @@ function startGame(string $description, callable $getQuestion, callable $getExpe
 
 function run(callable $getQuestion, callable $getExpected, callable|null $getTextQuestion)
 {
-    for ($round = 0, $maxRounds = 3; $round < $maxRounds; $round += 1) {
+    $round = 0;
+    $maxRounds = 3;
+    
+    for (; $round < $maxRounds; $round += 1) {
         $question = $getQuestion();
         $textQuestion = (is_null($getTextQuestion)) ? $question : $getTextQuestion($question);
         line("Question: $textQuestion");

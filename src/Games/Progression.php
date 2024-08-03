@@ -21,22 +21,22 @@ function run()
 
     $getQuestion = function () {
         $progression = generateProgression(rand(5, 10), rand(1, 10), rand(1, 10));
-        $hiddenIndex = rand(0, count($progression) - 1);
-        $progression[$hiddenIndex] = '..';
+        $index = rand(0, count($progression) - 1);
+        $progression[$index] = '..';
         return $progression;
     };
 
     $getTextQuestion = fn(array $progression) => implode(' ', $progression);
 
     $getAnswer = function (array $progression) {
-        $hiddenIndex = array_search('..', $progression);
+        $index = array_search('..', $progression, true);
 
-        if ($hiddenIndex < 2) {
-            $answer = $progression[$hiddenIndex + 1] - ($progression[$hiddenIndex + 2] - $progression[$hiddenIndex + 1]);
-        } elseif ($hiddenIndex < count($progression) - 2) {
-            $answer = $progression[$hiddenIndex - 1] + ($progression[$hiddenIndex + 2] - $progression[$hiddenIndex + 1]);
+        if ($index < 2) {
+            $answer = (int) $progression[$index + 1] - ((int) $progression[$index + 2] - (int) $progression[$index + 1]);
+        } elseif ($index < count($progression) - 2) {
+            $answer = (int) $progression[$index - 1] + ((int) $progression[$index + 2] - (int) $progression[$index + 1]);
         } else {
-            $answer = $progression[$hiddenIndex - 1] - ($progression[$hiddenIndex - 2] - $progression[$hiddenIndex - 1]);
+            $answer = (int) $progression[$index - 1] - ((int) $progression[$index - 2] - (int) $progression[$index - 1]);
         }
 
         return (string) $answer;
