@@ -20,7 +20,7 @@ function run(callable $getQuestion, callable $getExpected, callable|null $getTex
 {
     $round = 0;
     $maxRounds = 3;
-    
+
     for (; $round < $maxRounds; $round += 1) {
         $question = $getQuestion();
         $textQuestion = (is_null($getTextQuestion)) ? $question : $getTextQuestion($question);
